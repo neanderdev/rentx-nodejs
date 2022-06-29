@@ -30,7 +30,6 @@ services:
       - database_ignite
 
 
-
 volumes:
   pgdata:
     driver: local
