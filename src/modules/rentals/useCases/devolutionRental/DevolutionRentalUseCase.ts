@@ -8,7 +8,6 @@ import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   id: string;
-  user_id: string;
 }
 
 @injectable()
@@ -22,15 +21,16 @@ class DevolutionRentalUseCase {
     private dateProvider: IDateProvider
   ) {}
 
-  async execute({ id, user_id }: IRequest): Promise<Rental> {
+  async execute({ id }: IRequest): Promise<Rental> {
     const rental = await this.rentalsRepository.findById(id);
-    const car = await this.carsRepository.findById(id);
 
     const minimun_daily = 1;
 
     if (!rental) {
       throw new AppError("Rental does not exists");
     }
+
+    const car = await this.carsRepository.findById(rental.car_id);
 
     const dateNow = this.dateProvider.dateNow();
 
@@ -62,7 +62,7 @@ class DevolutionRentalUseCase {
     rental.total = total;
 
     await this.rentalsRepository.create(rental);
-    await this.carsRepository.updateAvailable(id, true);
+    await this.carsRepository.updateAvailable(car.id, true);
 
     return rental;
   }
