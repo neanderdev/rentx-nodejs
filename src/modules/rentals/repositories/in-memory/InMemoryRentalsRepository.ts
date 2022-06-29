@@ -5,7 +5,7 @@ import { IRentalsRepository } from "@modules/rentals/infra/typeorm/repositories/
 class InMemoryRentalsRepository implements IRentalsRepository {
   rentals: Rental[] = [];
 
-  async findOpenRentaByCar(car_id: string): Promise<Rental> {
+  async findOpenRentalByCar(car_id: string): Promise<Rental> {
     return this.rentals.find(
       (rental) => rental.car_id === car_id && !rental.end_date
     );
