@@ -6,8 +6,7 @@ Deve ser possível cadastrar um novo carro.
 **RN**
 Não deve ser possível cadastrar um carro com uma placa já existente.
 O carro deve ser cadastrado por padrão, com disponibilidade.
-
-- O usuário responsável pelo cadastro deve ser um usuário administrador.
+O usuário responsável pelo cadastro deve ser um usuário administrador.
 
 # Listagem de carros
 
@@ -74,3 +73,14 @@ Deve ser possível realizar a busca de todos os alugueis para o usuário.
 
 **RN**
 O usuário deve estar logado na aplicação.
+
+# Recuperar Senha
+
+**RF**
+Deve ser possível o usuário recuperar a senha informado o e-mail.
+O usuário deve receber um e-mail com o passo a passo para a recuperação da senha.
+O usuário deve conseguir inserir uma nova senha
+
+**RN**
+O usuário precisa informar uma nova senha.
+O link enviado para a recuperação deve expirar em 3 horas.
