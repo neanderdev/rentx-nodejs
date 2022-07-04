@@ -45,20 +45,19 @@ class InMemoryCarsRepository implements ICarsRepository {
     category_id?: string,
     name?: string
   ): Promise<Car[]> {
-    const carsAvailable = this.cars.filter((car) => {
-      if (
-        car.available === true ||
-        (brand && car.brand === brand) ||
-        (category_id && car.category_id === category_id) ||
-        (name && car.name === name)
-      ) {
-        return car;
-      }
+    let availableCars = this.cars.filter((car) => car.available);
 
-      return null;
+    if (!name && !brand && !category_id) return availableCars;
+
+    availableCars = availableCars.filter((car) => {
+      if (car.name === name) return true;
+      if (car.brand === brand) return true;
+      if (car.category_id === category_id) return true;
+
+      return false;
     });
 
-    return carsAvailable;
+    return availableCars;
   }
 
   async findById(id: string): Promise<Car> {
