@@ -1,86 +1,91 @@
-# Cadastro de carro
+# RentX
 
-**RF**
-Deve ser possível cadastrar um novo carro.
+![GitHub repo size](https://img.shields.io/github/repo-size/neanderdev/rentx-nodejs?style=for-the-badge)
+![GitHub languages](https://img.shields.io/github/languages/count/neanderdev/rentx-nodejs?style=for-the-badge)
+![GitHub language top](https://img.shields.io/github/languages/top/neanderdev/rentx-nodejs?style=for-the-badge)
+![GitHub stars](https://img.shields.io/github/stars/neanderdev/rentx-nodejs?style=for-the-badge)
 
-**RN**
-Não deve ser possível cadastrar um carro com uma placa já existente.
-O carro deve ser cadastrado por padrão, com disponibilidade.
-O usuário responsável pelo cadastro deve ser um usuário administrador.
+<img src="Diagrama-banco-de-dados-RentX.png" alt="Diagrama DB - RentX">
 
-# Listagem de carros
+> 🚀 Aplicação desenvolvida no Ignite curso da Rocketseat na trila de NodeJS, desenvolvida em Express, banco de dados em PostgreSQL rodando no docker, ORM foi usado o TypeORM, Sentry para monitoramento de desempenho da API, e rate-limiter-flexible para evitar ataque DDoS e documentação em Swagger, autentitação em JWT com refresh-token.
 
-**RF**
-Deve ser possível listar todos os carros disponíveis.
-Deve ser possível listar todos os carros disponíveis pelo nome da categoria.
-Deve ser possível listar todos os carros disponíveis pelo nome da marca.
-Deve ser possível listar todos os carros disponíveis pelo nome do carro.
+## 🚀 Tecnologias
+[![NODEJS](https://img.shields.io/badge/Node-green?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/s)
+[![TYPESCRIPT](https://img.shields.io/badge/Typescript-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/docs/)
+[![EXPRESS](https://img.shields.io/badge/Express-black?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/pt-br/)
+[![DOCKER](https://img.shields.io/badge/Docker-blue?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/)
+[![POSTGRESQL](https://img.shields.io/badge/PostgreSQL-blue?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/docs/)
+[![SENTRY](https://img.shields.io/badge/Sentry-blue?style=for-the-badge&logo=sentry&logoColor=white)](https://docs.sentry.io/)
+[![SWAGGER](https://img.shields.io/badge/Swagger-green?style=for-the-badge&logo=swagger&logoColor=white)](https://swagger.io/docs/)
 
-**RN**
-O usuário não precisar estar logado no sistema.
+## 💻 Pré-requisitos
 
-# Cadastro de especificação no carro
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
+* Você instalou a versão mais recente de `<GIT / NodeJS / Yarn / PostgreSQL / Docker>`.
+* Você tem uma máquina `<Windows / Linux / Mac>`.
 
-**RF**
-Deve ser possível cadastrar uma especificação para um carro.
+## 🚀 Rodando a API RentX na sua máquina
 
-**RN**
-Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
-Não deve ser possível cadastrar uma especificação já existente para o mesmo carro.
-O usuário responsável pelo cadastro deve ser um usuário administrador.
+Para rodar a API RentX na sua máquina, siga estas etapas:
 
-# Cadastro de imagens do carro
+## Clone this repository
+``` 
+$ git clone https://github.com/neanderdev/rentx-nodejs.git
+```
 
-**RF**
-Deve ser possível cadastrar a imagem do carro.
+## Go into the repository
+```
+$ cd rentx-nodejs
+```
 
-**RNF**
-Utilizar o multer para upload dos arquivos.
+## Install dependencies
+```
+$ yarn
+```
 
-**RN**
-O usuário deve poder cadastrar mais de uma imagem para o carro.
-O usuário responsável pelo cadastro deve ser um usuário administrador.
+Antes de iniciar a aplicação, cria um arquivo na raiz do projeto chamado .env.local e pega o exemplo das váriaveis de ambiente no arquivo .env.example e preencha com as suas informações e você também terá que criar um arquivo ormconfig.json com a configuração do seu banco de dados postgresql.
 
-# Aluguel de carro
+## Run the database
+```
+$ docker compose up -d
+```
 
-**RF**
-Deve ser possível cadastrar um aluguel.
+## Build da aplicação com o docker (não obrigatória)
+```
+$ docker build -t rentx .
+```
 
-**RN**
-O aluguel deve ter duaração mínimo de 24 horas.
-Não deve ser possível cadastrar um novo aluguel, caso já existe um aberto para o mesmo usuário.
-Não deve ser possível cadastrar um novo aluguel, caso já existe um aberto para o mesmo carro.
-O usuário deve estar logado na aplicação.
-Ao realizar um aluguel, o status do carro deverá ser alterado para indisponível.
+## Run the app
+```
+$ yarn dev
+```
 
-# Devoluçaõ de carro
+## 📫 Contribuindo para RentX
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+Para contribuir com RentX, siga estas etapas:
 
-**RF**
-Deve ser possível realizar a devolução de um carro.
+1. Bifurque este repositório.
+2. Crie um branch: `git checkout -b <nome_branch>`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+5. Crie a solicitação de pull.
 
-**RN**
-Se o carro for devolvido com menos de 24 horas, deverá ser cobrada dirária completa.
-Ao realizar a devolução, o carro deverá ser liberado para outro aluguel.
-Ao realizar a devolução, o usuário deverá ser liberado para outro aluguel.
-Ao realizar a devolução, deverá ser calculado o total do aluguel.
-Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrado multa que proporcinou aos dias de atraso.
-Caso haja multa, deverá ser somado ao total do aluguel.
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-# Listagem de alugueis para usuário
+## 🤝 Colaboradores
 
-**RF**
-Deve ser possível realizar a busca de todos os alugueis para o usuário.
+Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
-**RN**
-O usuário deve estar logado na aplicação.
-
-# Recuperar Senha
-
-**RF**
-Deve ser possível o usuário recuperar a senha informado o e-mail.
-O usuário deve receber um e-mail com o passo a passo para a recuperação da senha.
-O usuário deve conseguir inserir uma nova senha
-
-**RN**
-O usuário precisa informar uma nova senha.
-O link enviado para a recuperação deve expirar em 3 horas.
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars3.githubusercontent.com/u/62663706" width="100px;" alt="Foto do Neander de Souza no GitHub"/><br>
+        <sub>
+          <b>Neander de Souza</b>
+        </sub>
+      </a>
+    </td>    
+  </tr>
+</table>
